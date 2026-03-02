@@ -15,7 +15,9 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
-load_dotenv()
+# Charger le .env depuis la racine du projet (où se trouve utils.py)
+RACINE_PROJET = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(RACINE_PROJET, ".env"))
 
 # Détection de la clé disponible
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
