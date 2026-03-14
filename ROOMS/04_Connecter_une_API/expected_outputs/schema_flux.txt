@@ -6,24 +6,24 @@ Completez ce schema en decrivant ce qui circule a chaque etape.
 Client Python (12_client_local.py)
     |
     |  [1] Requete HTTP POST vers http://127.0.0.1:8000/question
-    |      Donnees envoyees : [decrivez le format]
-    |      Cle API presente ? [ ] oui  [ ] non
+    |      Donnees envoyees : JSON {"question": "Qu'est-ce que Python ?"}
+    |      Cle API presente ? [ ] oui  [X] non
     v
 Serveur FastAPI (mini_api_fastapi.py)
     |
     |  [2] Appel API vers Groq
-    |      Donnees envoyees : [decrivez le format]
-    |      Cle API presente ? [ ] oui  [ ] non
+    |      Donnees envoyees : JSON avec model, messages[], temperature, max_tokens + Header Authorization avec la cle
+    |      Cle API presente ? [X] oui  [ ] non
     v
 Serveur Groq (distant)
     |
     |  [3] Le modele Llama genere la reponse
-    |      Donnees retournees : [decrivez le format]
+    |      Donnees retournees : JSON avec choices[0].message.content, usage.total_tokens, model
     v
 Serveur FastAPI
     |
     |  [4] Construction de la reponse HTTP
-    |      Donnees retournees au client : [decrivez le format]
+    |      Donnees retournees au client : JSON {"question": "...", "reponse": "...", "tokens_utilises": 123}
     v
 Client Python
     |
@@ -32,7 +32,9 @@ Client Python
 
 Questions a remplir :
 - Ou se trouve la cle API ? (cote client ou cote serveur ?)
-  Reponse : [votre reponse]
+  Reponse : Cote serveur uniquement (dans le fichier .env lu par mini_api_fastapi.py via utils.py)
 
 - Pourquoi est-ce une bonne pratique de garder la cle cote serveur ?
-  Reponse : [votre reponse]
+  Reponse : Pour la securite ! Si la cle etait cote client, n'importe qui pourrait la recuperer 
+  (via le code source, les outils de developpement du navigateur, etc.) et l'utiliser a nos frais.
+  En gardant la cle sur le serveur, seul le serveur peut faire des appels a l'API payante.
