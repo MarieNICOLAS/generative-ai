@@ -1,9 +1,11 @@
 # Script 17 - Pipeline RAG complet : question -> recherche -> reponse contextualisee
 # Room 05 - Creer un systeme RAG
+# Note: On utilise numpy au lieu de ChromaDB (incompatible Python 3.14)
 
 import sys
 import os
-import chromadb
+import numpy as np
+import pickle
 from sentence_transformers import SentenceTransformer
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
@@ -13,27 +15,17 @@ from rag_utils import charger_pdf, decouper_en_segments, chemin_dataset
 client_llm = creer_client()
 
 
-def construire_index(segments, modele_embedding):
-    """Cree l'index vectoriel ChromaDB a partir des segments."""
-    embeddings = modele_embedding.encode(segments)
-    client_chroma = chromadb.Client()
-    collection = client_chroma.get_or_create_collection(name="rapport_rag")
-    collection.add(
-        documents=segments,
-        embeddings=[emb.tolist() for emb in embeddings],
-        ids=[f"seg_{i}" for i in range(len(segments))]
-    )
-    return collection
+def similarite_cosinus(v1, v2):
+    """Calcule la similarite cosinus entre deux vecteurs."""
+    return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
 
-def rechercher_contexte(question, collection, modele_embedding, n_resultats=3):
+def rechercher_contexte(question, segments, embeddings, modele_embedding, n_resultats=3):
     """Recherche les segments les plus pertinents pour la question."""
     vecteur_q = modele_embedding.encode([question])[0]
-    resultats = collection.query(
-        query_embeddings=[vecteur_q.tolist()],
-        n_results=n_resultats
-    )
-    return resultats["documents"][0]
+    scores = [similarite_cosinus(vecteur_q, emb) for emb in embeddings]
+    indices_tries = np.argsort(scores)[::-1][:n_resultats]
+    return [segments[i] for i in indices_tries]
 
 
 def generer_reponse_rag(question, passages):
@@ -63,16 +55,35 @@ def generer_reponse_rag(question, passages):
 
 # --- Programme principal ---
 
-chemin_pdf = chemin_dataset("rapport_fictif.pdf")
-print("Chargement du document...")
-texte = charger_pdf(chemin_pdf)
-segments = decouper_en_segments(texte)
+# Charger l'index s'il existe, sinon le creer
+chemin_index = os.path.join(os.path.dirname(__file__), "index_rag.pkl")
 
-print("Creation de l'index vectoriel...")
-modele_emb = SentenceTransformer("all-MiniLM-L6-v2")
-collection = construire_index(segments, modele_emb)
-print(f"Index pret : {collection.count()} segments indexes.")
+if os.path.exists(chemin_index):
+    print("Chargement de l'index existant...")
+    with open(chemin_index, "rb") as f:
+        data = pickle.load(f)
+        segments = data["segments"]
+        embeddings = data["embeddings"]
+else:
+    chemin_pdf = chemin_dataset("rapport_fictif.pdf")
+    print("Chargement du document...")
+    texte = charger_pdf(chemin_pdf)
+    segments = decouper_en_segments(texte)
+    
+    print("Creation de l'index vectoriel...")
+    modele_emb = SentenceTransformer("all-MiniLM-L6-v2")
+    embeddings = modele_emb.encode(segments)
+    
+    # Sauvegarde pour reutilisation
+    data = {"segments": segments, "embeddings": embeddings}
+    with open(chemin_index, "wb") as f:
+        pickle.dump(data, f)
+
+print(f"Index pret : {len(segments)} segments indexes.")
 print()
+
+# Charger le modele d'embedding pour les questions
+modele_emb = SentenceTransformer("all-MiniLM-L6-v2")
 
 print("=== Systeme RAG pret ===")
 print("Posez vos questions sur le document. Tapez 'quitter' pour arreter.")
@@ -88,7 +99,7 @@ while True:
     if not question:
         continue
 
-    passages = rechercher_contexte(question, collection, modele_emb)
+    passages = rechercher_contexte(question, segments, embeddings, modele_emb)
 
     print("\n--- Passages trouves ---")
     for i, p in enumerate(passages):

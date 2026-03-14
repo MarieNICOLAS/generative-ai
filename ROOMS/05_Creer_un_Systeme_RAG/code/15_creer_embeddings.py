@@ -1,7 +1,10 @@
-# Script 15 - Creer les embeddings et les stocker dans ChromaDB
+# Script 15 - Creer les embeddings et les stocker
 # Room 05 - Creer un systeme RAG
+# Note: On utilise numpy au lieu de ChromaDB (incompatible Python 3.14)
 
-import chromadb
+import numpy as np
+import pickle
+import os
 from sentence_transformers import SentenceTransformer
 from rag_utils import charger_pdf, decouper_en_segments, chemin_dataset
 
@@ -33,18 +36,14 @@ print("=== Exemple de vecteur (10 premieres dimensions) ===")
 print([round(float(x), 4) for x in embeddings[0][:10]])
 print()
 
-# Stockage dans ChromaDB
-client_chroma = chromadb.Client()
-
-# On cree (ou recupere) une collection nommee "rapport"
-collection = client_chroma.get_or_create_collection(name="rapport")
-
-# Ajout des segments et de leurs embeddings dans la collection
-collection.add(
-    documents=segments,
-    embeddings=[emb.tolist() for emb in embeddings],
-    ids=[f"segment_{i}" for i in range(len(segments))]
-)
+# Stockage dans un fichier pickle (alternative a ChromaDB)
+chemin_index = os.path.join(os.path.dirname(__file__), "index_rag.pkl")
+data = {
+    "segments": segments,
+    "embeddings": embeddings
+}
+with open(chemin_index, "wb") as f:
+    pickle.dump(data, f)
 
 print("=== Indexation terminee ===")
-print(f"{collection.count()} segments stockes dans ChromaDB.")
+print(f"{len(segments)} segments stockes dans index_rag.pkl.")
