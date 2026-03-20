@@ -1,0 +1,56 @@
+Étude de cas - Réponses - Room 06
+===================================
+
+Contexte : Une start-up a un chatbot LLM de support client avec 3 incidents.
+
+--- Question 1 : Quel type de risque correspond à chaque incident ? ---
+
+Incident 1 (Garantie 5 ans au lieu de 2 ans) :
+C'est une HALLUCINATION. Le modèle a inventé une information factuelle fausse
+concernant la durée de garantie. Ce type d'erreur est typique des LLMs qui génèrent
+du texte plausible sans vérifier l'exactitude des faits.
+
+Incident 2 (Données d'un autre client révélées) :
+C'est une FUITE DE DONNÉES PERSONNELLES, potentiellement aggravée par du PROMPT INJECTION.
+Le client a pu formuler sa question de manière à extraire des informations confidentielles.
+Cela constitue aussi une violation du RGPD si des données personnelles sont exposées.
+
+Incident 3 (Recommandation d'un produit concurrent) :
+C'est un BIAIS D'ENTRAÎNEMENT ou une DÉRIVE COMPORTEMENTALE. Le modèle a été entraîné
+sur des données incluant des comparatifs produits et n'a pas de "loyauté" envers l'entreprise.
+C'est aussi un risque COMMERCIAL et potentiellement JURIDIQUE.
+
+--- Question 2 : Quelle mesure aurait pu prévenir chaque incident ? ---
+
+Incident 1 :
+Utiliser un système RAG connecté à la documentation officielle des produits.
+Le LLM devrait répondre UNIQUEMENT à partir de sources vérifiées, pas de ses
+connaissances générales.
+
+Incident 2 :
+Mettre en place un filtrage des données sortantes (PII detection), une isolation
+des données par session client, et une validation des requêtes pour détecter
+les tentatives de prompt injection.
+
+Incident 3 :
+Ajouter une instruction système explicite : "Ne jamais mentionner ou recommander
+de produits concurrents." Filtrer les réponses avant envoi pour détecter les
+noms de marques concurrentes.
+
+--- Question 3 : Comment modifier le système pour éviter ces problèmes ? ---
+
+1. Architecture RAG obligatoire : Le chatbot ne répond QU'à partir de la base
+   de connaissances interne validée, jamais de ses connaissances générales.
+
+2. Isolation des données clients : Chaque session n'accède qu'aux données du
+   client connecté. Aucune requête ne peut accéder aux données d'autres clients.
+
+3. Filtrage entrée/sortie : 
+   - En entrée : détecter les tentatives de prompt injection
+   - En sortie : vérifier qu'aucune donnée personnelle ou mention de concurrent n'apparaît
+
+4. Human-in-the-loop : Pour les questions sensibles (garanties, prix, conditions),
+   faire valider par un humain avant envoi ou rediriger vers un conseiller.
+
+5. Logs et audit : Enregistrer toutes les conversations pour identifier les
+   patterns d'abus et améliorer continuellement les filtres.

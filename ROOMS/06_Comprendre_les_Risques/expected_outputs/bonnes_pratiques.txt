@@ -1,0 +1,32 @@
+Bonnes pratiques pour l'utilisation d'un LLM en contexte professionnel - Room 06
+==================================================================================
+
+1. TOUJOURS VÉRIFIER LES FAITS
+   Ne jamais publier ou utiliser une information factuelle générée par un LLM sans
+   vérification externe (source officielle, base de données, document interne).
+   → Justification : Les hallucinations sont inhérentes aux LLMs et peuvent avoir
+   des conséquences juridiques, financières ou réputationnelles.
+
+2. ANONYMISER LES DONNÉES AVANT ENVOI
+   Supprimer ou remplacer toutes les données personnelles (noms, emails, numéros)
+   avant d'envoyer un texte à un LLM via une API externe.
+   → Justification : Conformité RGPD et protection contre les fuites de données
+   vers des serveurs tiers, potentiellement hors Europe.
+
+3. GARDER UN HUMAIN DANS LA BOUCLE
+   Pour toute décision importante (recrutement, crédit, médical, juridique),
+   la décision finale doit être prise par un humain, pas par le LLM seul.
+   → Justification : Le LLM peut reproduire des biais et n'a pas la responsabilité
+   légale - l'humain reste responsable des conséquences.
+
+4. DÉFINIR UN PROMPT SYSTÈME RESTRICTIF
+   Limiter explicitement ce que le LLM peut et ne peut pas faire : "Ne réponds
+   qu'à partir des documents fournis", "Ne donne jamais de conseil médical/juridique".
+   → Justification : Sans contraintes, le LLM peut dévier de son rôle prévu et
+   générer du contenu inapproprié ou dangereux.
+
+5. AUDITER RÉGULIÈREMENT LES RÉPONSES
+   Mettre en place un processus de revue périodique des réponses générées pour
+   détecter les dérives, biais ou erreurs récurrentes.
+   → Justification : Les comportements du LLM peuvent changer avec les mises à jour
+   du modèle, et les nouveaux cas d'usage révèlent de nouveaux risques.

@@ -1,20 +1,33 @@
 ﻿Comparaison RAG vs réponse directe - Room 05
 ===============================================
 
-Question posée : [votre question ici]
+Question posée : Quel est le chiffre d'affaires de TechVision SAS ?
 
 --- Réponse RAG (via le pipeline) ---
-[Collez la réponse du script 17 ici]
+Selon les extraits fournis, le chiffre d'affaires annuel de TechVision SAS s'élève 
+à 8,5 millions d'euros en 2024. L'objectif pour 2025 est d'augmenter ce chiffre 
+de 15% pour atteindre 9,8 millions d'euros.
 
 --- Réponse directe (sans contexte) ---
-[Collez la réponse du script 01 avec la même question ici]
+Je n'ai pas accès à des informations en temps réel sur les chiffres d'affaires 
+des entreprises, notamment TechVision SAS. Cependant, je peux vous suggérer 
+quelques options pour obtenir cette information :
+1. Vérifiez le site web de TechVision SAS
+2. Recherchez des rapports financiers sur SIRENE
+3. Contactez l'entreprise directement
+4. Utilisez des bases de données commerciales
 
 --- Analyse ---
-1. La réponse RAG est-elle plus précise ? [ ] oui  [ ] non
-   Explication : [votre observation]
+1. La réponse RAG est-elle plus précise ? [X] oui  [ ] non
+   Explication : Le RAG fournit le chiffre exact (8,5M€) car il a accès au document.
+   Le LLM seul ne connaît pas cette entreprise fictive et ne peut pas inventer de chiffres.
 
-2. La réponse directe contient-elle des informations inventées ? [ ] oui  [ ] non
-   Explication : [votre observation]
+2. La réponse directe contient-elle des informations inventées ? [ ] oui  [X] non
+   Explication : Dans ce cas, le LLM a correctement admis ne pas connaître l'entreprise.
+   Mais avec une entreprise réelle, il aurait pu inventer ou donner des chiffres obsolètes.
 
 3. Dans quel cas utiliseriez-vous le RAG plutôt qu'un appel direct ?
-   [Votre réponse ici]
+   - Documents internes/confidentiels (rapports, procédures, contrats)
+   - Données récentes non présentes dans l'entraînement du LLM
+   - Besoin de traçabilité : savoir d'où vient l'information
+   - Éviter les hallucinations sur des faits précis (chiffres, dates, noms)

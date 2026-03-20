@@ -23,8 +23,14 @@ def expliquer_sujet(sujet):
     #   - Une contrainte de format (3 paragraphes : définition, analogie, exemple)
     #   - Une contrainte de longueur (maximum 150 mots)
     prompt_explication = (
-        # A COMPLETER
-        f"Explique le sujet suivant : {sujet}"  # Version basique à améliorer
+        f"Tu es un professeur bienveillant qui enseigne à des étudiants débutants sans aucune base en informatique ou IA. "
+        f"Ton objectif est d'expliquer les concepts de manière simple et accessible. "
+        f"Explique le sujet suivant : {sujet}. "
+        f"Structure ta réponse en 3 paragraphes : "
+        f"1) Définition simple du concept, "
+        f"2) Une analogie du quotidien pour mieux comprendre, "
+        f"3) Un exemple concret d'utilisation. "
+        f"Maximum 150 mots au total. Utilise un ton encourageant."
     )
 
     reponse = client.chat.completions.create(
@@ -40,11 +46,14 @@ def proposer_exercice(sujet):
     """
     Propose un exercice pratique sur le sujet donné.
     """
-    # A COMPLETER : construisez un prompt qui demande au modèle de créer
-    # un exercice pratique simple sur le sujet fourni.
     prompt_exercice = (
-        # A COMPLETER
-        f"Propose un exercice sur le sujet suivant : {sujet}"  # Version basique à améliorer
+        f"Tu es un professeur qui crée des exercices pratiques pour débutants. "
+        f"Propose UN exercice simple et pratique sur le sujet : {sujet}. "
+        f"L'exercice doit : "
+        f"1) Être réalisable en 5 minutes, "
+        f"2) Ne nécessiter aucun outil spécial, "
+        f"3) Inclure les étapes à suivre. "
+        f"Format : énoncé de l'exercice suivi des étapes numérotées. Maximum 100 mots."
     )
 
     reponse = client.chat.completions.create(

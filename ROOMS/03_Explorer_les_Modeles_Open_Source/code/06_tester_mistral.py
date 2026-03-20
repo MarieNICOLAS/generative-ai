@@ -1,52 +1,47 @@
-# Script 06 - Interroger Mistral-7B-Instruct via Inference Providers (Hugging Face)
+# Script 06 - Interroger Mixtral (Mistral) via Groq
 # Room 03 - Explorer les modèles open source
 
 import os
+import time
 from dotenv import load_dotenv
-from huggingface_hub import InferenceClient
+from groq import Groq
 
-# Chargement du token Hugging Face depuis .env
+# Chargement de la clé Groq depuis .env
 load_dotenv()
-HF_TOKEN = os.getenv("HF_TOKEN")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-# ID du modèle instruction Mistral sur Hugging Face
-MODEL_ID = "mistralai/Mistral-7B-Instruct-v0.3:fastest"
+# Modèle Llama 3.3 70B (plus grand modèle disponible sur Groq)
+MODEL_ID = "llama-3.3-70b-versatile"
 
 # Le prompt à envoyer - utilisez le même prompt pour les 3 modèles
 prompt = "Explique en 3 phrases simples ce qu'est une base de données relationnelle."
 
-print("=== Interrogation de Mistral-7B-Instruct ===")
+print("=== Interrogation de Llama 3.3 70B ===")
 print(f"Prompt : {prompt}")
 print("En attente de la réponse...")
 print()
 
-if not HF_TOKEN or HF_TOKEN.startswith("hf_votre_"):
-    print("HF_TOKEN manquant ou invalide dans le fichier .env")
-    print("Ajoutez un token Hugging Face valide : HF_TOKEN=hf_...")
-    print("Permission requise : Make calls to Inference Providers.")
+if not GROQ_API_KEY or GROQ_API_KEY.startswith("gsk_votre"):
+    print("GROQ_API_KEY manquant ou invalide dans le fichier .env")
+    print("Créez une clé sur https://console.groq.com")
     raise SystemExit(1)
 
-client = InferenceClient(api_key=HF_TOKEN, timeout=60)
+client = Groq(api_key=GROQ_API_KEY)
 
 try:
+    start_time = time.time()
     completion = client.chat.completions.create(
         model=MODEL_ID,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3,
         max_tokens=250
     )
+    elapsed = time.time() - start_time
+    
     texte_genere = completion.choices[0].message.content
-    print("=== Réponse de Mistral-7B-Instruct ===")
+    print("=== Réponse de Llama 3.3 70B ===")
     print(texte_genere)
+    print()
+    print(f"Temps de réponse : {elapsed:.2f} secondes")
 except Exception as e:
-    status_code = getattr(getattr(e, "response", None), "status_code", None)
-    if status_code == 401:
-        print("Erreur 401 : token HF invalide ou absent.")
-    elif status_code == 403:
-        print("Erreur 403 : token sans permission Inference Providers.")
-    elif status_code == 429:
-        print("Erreur 429 : quota/limite atteinte. Reessayez plus tard.")
-    elif status_code == 503:
-        print("Erreur 503 : modele en cours de chargement, reessayez dans 30 secondes.")
-    else:
-        print(f"Erreur lors de l'appel API : {e}")
+    print(f"Erreur lors de l'appel API : {e}")

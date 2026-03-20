@@ -10,16 +10,15 @@ from utils import creer_client, MODELE
 client = creer_client()
 
 # --- A MODIFIER ---
-PROMPT_VAGUE = "Parle-moi des réseaux de neurones."
+PROMPT_VAGUE = "Aide-moi avec mon code Python."
 
 PROMPT_STRUCTURE = (
-    "Tu es un professeur de Master 1 en informatique. "
-    "Un étudiant n'ayant aucune connaissance en IA te demande une explication. "
-    "Explique ce qu'est un réseau de neurones artificiel en 3 paragraphes : "
-    "1) une analogie avec le cerveau humain, "
-    "2) comment il apprend, "
-    "3) un exemple d'application concrète. "
-    "Utilise un langage simple, sans formule mathématique."
+    "Tu es un développeur senior Python. "
+    "Je suis un étudiant débutant qui apprend Python. "
+    "J'ai cette erreur dans mon code :\n\n"
+    "print(hello)\n\n"
+    "Erreur : NameError: name 'hello' is not defined\n\n"
+    "Explique l'erreur et donne le code corrigé en 3-4 lignes max."
 )
 # --- FIN A MODIFIER ---
 

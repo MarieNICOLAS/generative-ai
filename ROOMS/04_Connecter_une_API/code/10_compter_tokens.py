@@ -25,7 +25,7 @@ prompt = (
     "Tu es un professeur universitaire specialise en intelligence artificielle. "
     "Explique a un etudiant debutant ce qu'est le machine learning "
     "en utilisant uniquement des exemples du quotidien. "
-    "Limite ta reponse a 100 mots."
+    "Limite ta reponse a 75 mots."
 )
 
 print("=== Comptage de tokens ===")

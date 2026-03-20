@@ -1,0 +1,15 @@
+# Requirements - Projet Veille Technologique
+# Room 08 - Projet final
+
+# Client API
+groq>=0.4.0
+
+# Embeddings
+sentence-transformers>=2.2.0
+
+# Calculs vectoriels
+numpy>=1.24.0
+
+# Dépendances indirectes
+torch>=2.0.0
+transformers>=4.30.0

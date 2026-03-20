@@ -2,30 +2,130 @@
 ==================================
 
 --- Réponse au prompt VAGUE ---
-[Collez ici la réponse obtenue avec le prompt vague]
+[Prompt : Parle-moi des réseaux de neurones....
+
+Les réseaux de neurones sont un type d'intelligence artificielle inspiré par le fonctionnement du cerveau humain. Ils sont composés de plusieurs couches de neurones artificiels, appelés "nœuds" ou "neurones", qui sont connectés entre eux par des synapses.
+
+**Fonctionnement d'un neurone**
+
+Un neurone artificiel est une unité de calcul qui prend en entrée plusieurs signaux d'entrée, les traite et les envoie à une sortie. Chaque neurone a plusieurs entrées, appelées "synapses", qui reçoivent des signaux d'autres neurones. Les signaux d'entrée sont multipliés par des poids, qui déterminent l'importance de chaque signal. Les signaux multipliés sont ensuite additionnés et soumis à une fonction d'activation, qui détermine la sortie du neurone.
+
+**Types de réseaux de neurones**
+
+Il existe plusieurs types de réseaux de neurones, notamment :
+
+1. **Réseau de neurones à couches cachées** : ce type de réseau a plusieurs couches de neurones, chacune traitant les signaux d'entrée de manière différente. Les couches cachées sont utilisées pour extraire des caractéristiques des données d'entrée.
+2. **Réseau de neurones convolutionnel** : ce type de réseau utilise des filtres convolutionnels pour traiter les données d'entrée, ce qui permet de détecter des motifs et des structures dans les données.
+3. **Réseau de neurones récurrent** : ce type de réseau utilise des boucles de rétroaction pour traiter les signaux d'entrée, ce qui permet de prendre en compte l'histoire des données.
+
+**Avantages des réseaux de neurones**]
 
 
 --- Réponse au prompt STRUCTURE ---
-[Collez ici la réponse obtenue avec le prompt structuré]
+============================================================
+  REPONSE AU PROMPT VAGUE
+============================================================
+Prompt : Parle-moi des réseaux de neurones....
+
+Les réseaux de neurones sont un type d'intelligence artificielle inspiré par le fonctionnement du cerveau humain. Ils sont composés de plusieurs couches de neurones artificiels, appelés "nœuds" ou "neurones", qui sont connectés entre eux par des synapses.
+
+**Fonctionnement d'un neurone**
+
+Un neurone artificiel est une unité de calcul qui prend en entrée plusieurs signaux d'entrée, les traite et les envoie à une sortie. Chaque neurone a plusieurs entrées, appelées "synapses", qui reçoivent des signaux d'autres neurones. Les signaux d'entrée sont multipliés par des poids, qui déterminent l'importance de chaque signal. Les signaux multipliés sont ensuite additionnés et soumis à une fonction d'activation, qui détermine la sortie du neurone.
+
+**Types de réseaux de neurones**
+
+Il existe plusieurs types de réseaux de neurones, notamment :
+
+1. **Réseau de neurones à couches cachées** : ce type de réseau a plusieurs couches de neurones, chacune traitant les signaux d'entrée de manière différente. Les couches cachées sont utilisées pour extraire des caractéristiques des données d'entrée.
+2. **Réseau de neurones convolutionnel** : ce type de réseau utilise des filtres convolutionnels pour traiter les données d'entrée, ce qui permet de détecter des motifs et des structures dans les données.
+3. **Réseau de neurones récurrent** : ce type de réseau utilise des boucles de rétroaction pour traiter les signaux d'entrée, ce qui permet de prendre en compte l'histoire des données.
+
+**Avantages des réseaux de neurones**
+
+
+
+============================================================
+  REPONSE AU PROMPT STRUCTURE
+============================================================
+Prompt : Tu es un professeur de biologie en Licence de Chimie-Biologie. Tu donnes un cours magistral sur les ...
+
+Mes étudiants de 3ème année de Licence de Chimie-Biologie, aujourd'hui nous allons explorer l'un des sujets les plus fascinants de la biologie moléculaire : les réseaux de neurones humains. Mais avant de plonger dans les détails, il est essentiel de comprendre la définition complète et précise de ce concept.
+
+Un réseau neuronal, également appelé réseau synaptique, est un ensemble de neurones interconnectés qui permettent la transmission et la traitement d'informations. Il s'agit d'un système complexe composé de neurones, de synapses et de neurotransmetteurs qui travaillent ensemble pour permettre la communication entre les différentes parties du cerveau. Les neurones sont les unités fonctionnelles de base du réseau, chacun capable de recevoir, de traiter et de transmettre des informations. Les synapses, quant à elles, sont les jonctions entre les neurones qui permettent la transmission des signaux électriques. Les neurotransmetteurs, tels que la dopamine, la sérotonine et l'acétylcholine, sont des molécules qui facilitent la transmission des signaux entre les neurones.
+
+Pour illustrer ce concept, imaginez un réseau de neurones comme un système de communication complexe, où chaque neurone est une station de radio qui reçoit et transmet des informations. Les synapses sont les lignes de communication entre les stations, et les neurotransmetteurs sont les messages qui sont transmis entre les stations. Lorsque vous apprenez quelque chose de nouveau, par exemple, votre cerveau crée un nouveau chemin de communication entre les neurones, ce qui permet de stocker et de rappeler l'information. C'est ainsi que les réseaux de neurones humains permettent la mémoire
+
 
 
 --- Analyse ---
 Quelle réponse est plus utile et pourquoi ? (2-3 phrases)
-[Votre analyse ici]
+[Le terme réseau de neurone est beaucoup trop vague, si on parle de biologie et chimie pur, là il nous parle de neurone artificiel.]
 
 
 --- Test JSON ---
-Le JSON retourné était-il valide du premier coup ? [ ] oui  [ ] non
+Le JSON retourné était-il valide du premier coup ? [X] oui  [ ] non
 Si non, quelle modification du prompt a permis de corriger ?
-[Votre observation ici]
 
+prompt = (
+    "Tu es un assistant pédagogique. "
+    "Génère une fiche de révision sur le sujet 'les types de données Python'. "
+    "Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ni après. "
+    "Utilise exactement cette structure : "
+    '{"titre": "...", "niveau": "débutant", "definition": "...", '
+    '"exemples": ["...", "..."], "erreurs_courantes": ["...", "..."]}'
+)
+=== Envoi du prompt au modèle ===
+Tu es un assistant pédagogique. Génère une fiche de révision sur le sujet 'les types de données Python'. Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ni après. Utilise exactement cet...
+
+=== Réponse brute du modèle ===
+{
+  "titre": "Les types de données Python",
+  "niveau": "débutant",
+  "definition": "Les types de données Python sont des catégories qui définissent le type de valeur qu'une variable peut contenir.",
+  "exemples": [
+    "int : 5 (entier)",
+    "float : 3.14 (réel)",
+    "str : 'Bonjour' (chaîne de caractères)",
+    "bool : True (valeur booléenne)",
+    "list : [1, 2, 3] (liste)",
+    "tuple : (1, 2, 3) (tuple)",
+    "dict : {'nom': 'Jean', 'age': 25} (dictionnaire)",
+    "set : {1, 2, 3} (ensemble)",
+    "NoneType : None (type de la valeur None)"
+  ],
+  "erreurs_courantes": [
+    "Mélanger les types de données (par exemple, essayer d'ajouter un entier et une chaîne de caractères)",
+    "Oublier de convertir un type de données avant de l'utiliser (par exemple, essayer d'utiliser une chaîne de caractères comme si c'était un entier)"
+  ]
+}
+
+=== JSON valide — Contenu extrait ===
+Titre    : Les types de données Python
+Niveau   : débutant
+Définition : Les types de données Python sont des catégories qui définissent le type de valeur qu'une variable peut contenir.
+
+Exemples :
+  - int : 5 (entier)
+  - float : 3.14 (réel)
+  - str : 'Bonjour' (chaîne de caractères)
+  - bool : True (valeur booléenne)
+  - list : [1, 2, 3] (liste)
+  - tuple : (1, 2, 3) (tuple)
+  - dict : {'nom': 'Jean', 'age': 25} (dictionnaire)
+  - set : {1, 2, 3} (ensemble)
+  - NoneType : None (type de la valeur None)
+
+Erreurs courantes :
+  - Mélanger les types de données (par exemple, essayer d'ajouter un entier et une chaîne de caractères)
+  - Oublier de convertir un type de données avant de l'utiliser (par exemple, essayer d'utiliser une chaîne de caractères comme si c'était un entier)
 
 --- Bilan ---
 1. Différence la plus importante entre prompt vague et prompt structuré :
-[Votre réponse ici]
+Le prompt structuré définit clairement le contexte, le public cible et le format attendu, ce qui permet d'obtenir une réponse précise et adaptée. Le prompt vague laisse le modèle deviner ce qu'on veut, ce qui donne une réponse générique et souvent hors sujet (ici, il parlait de neurones artificiels au lieu de neurones biologiques).
 
 2. Dans quel cas demanderiez-vous une sortie JSON ?
-[Votre réponse ici]
+On demande une sortie JSON quand on veut utiliser la réponse dans un programme Python, car on peut la parser directement avec json.loads(). C'est utile pour automatiser le traitement des réponses ou les stocker dans une base de données avec une structure prévisible.
 
 3. Comment le rôle a-t-il changé la qualité des réponses ?
-[Votre réponse ici]
+Le rôle "professeur de biologie" a orienté le modèle vers le bon domaine (neurosciences) avec un ton pédagogique adapté aux étudiants de L3. Sans rôle, le modèle a interprété "réseau de neurones" comme de l'IA, ce qui montre que le rôle guide fortement le contenu et le niveau de la réponse.
