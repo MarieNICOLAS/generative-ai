@@ -1,0 +1,127 @@
+=== SESSION DE DÉMONSTRATION - ASSISTANT DE VEILLE TECHNOLOGIQUE ===
+Date : 2026-03-20
+
+============================================================
+       ASSISTANT DE VEILLE TECHNOLOGIQUE
+============================================================
+
+Commandes disponibles :
+  1. résumer    - Résumer tous les articles
+  2. thèmes     - Classifier par thèmes
+  3. [question] - Poser une question sur les articles
+  4. quitter    - Fermer l'assistant
+
+Initialisation de l'assistant...
+Index chargé : 6 chunks
+Assistant prêt.
+
+>>> résumer
+
+Génération du résumé...
+
+### Article 1 - L'intelligence artificielle transforme le secteur bancaire
+**Thème principal** : Adoption de l'IA dans le secteur bancaire européen
+
+**Points clés** :
+- Les 5 grandes banques françaises ont investi 1,2 milliard d'euros en IA en 2024 (+35%)
+- Applications : détection de fraude, analyse de risque crédit, chatbots
+- Potentiel de réduction des coûts de 20-25% d'ici 2027 (McKinsey)
+
+**Risque identifié** : Biais algorithmique dans les décisions de crédit
+
+---
+
+### Article 2 - La pénurie de talents en cybersécurité s'aggrave
+**Thème principal** : Crise des ressources humaines en cybersécurité
+
+**Points clés** :
+- 3,5 millions de postes vacants mondialement, 15 000 en France
+- Profils recherchés : analystes SOC, réponse aux incidents, architectes cloud
+- Femmes : 24% des effectifs (vs 20% en 2020)
+
+**Chiffre clé** : +12% d'augmentation salariale moyenne
+
+---
+
+### Article 3 - Les villes intelligentes : promesses et controverses
+**Thème principal** : Déploiement des smart cities en France
+
+**Points clés** :
+- Villes avancées : Lyon, Bordeaux, Nice
+- Applications : gestion trafic, collecte déchets, qualité de l'air
+- Économie d'énergie potentielle : 15-30%
+
+**Controverse** : Risque de surveillance généralisée (reconnaissance faciale)
+
+>>> thèmes
+
+Classification des thèmes...
+
+## CLASSIFICATION THÉMATIQUE
+
+### 1. Thèmes principaux
+| Thème | Articles concernés |
+|-------|-------------------|
+| Intelligence Artificielle | Articles 1, 3 |
+| Cybersécurité | Article 2 |
+| Transformation numérique | Articles 1, 3 |
+| Emploi et talents | Article 2 |
+
+### 2. Tendances émergentes
+- **IA dans la finance** : Investissements massifs, automatisation croissante
+- **Pénurie de compétences tech** : Déficit structurel en cybersécurité
+- **Smart Cities** : Expansion avec tensions éthiques
+
+### 3. Acteurs mentionnés
+- **Entreprises** : McKinsey, Amazon Web Services (implicite)
+- **Institutions** : Banques françaises, Conseil national du numérique, (ISC)2
+- **Villes** : Lyon, Bordeaux, Nice
+
+### 4. Risques et controverses
+- Biais algorithmique dans le crédit bancaire
+- Surveillance de masse via smart cities
+- Inégalités salariales (grandes vs petites entreprises)
+
+>>> Combien les banques françaises ont-elles investi dans l'IA ?
+
+Recherche en cours...
+
+Selon l'[Article 1], les cinq plus grandes banques françaises ont consacré un total de **1,2 milliard d'euros** à des projets d'intelligence artificielle en 2024. Cela représente une augmentation de **35%** par rapport à l'année précédente.
+
+D'après une étude du cabinet McKinsey citée dans le même article, l'IA pourrait permettre aux banques de réduire leurs coûts opérationnels de **20 à 25%** d'ici 2027.
+
+>>> Quels sont les risques de l'IA dans les banques ?
+
+Recherche en cours...
+
+D'après l'[Article 1], le principal risque identifié est le **biais algorithmique** dans les décisions d'octroi de crédit.
+
+Plusieurs associations de consommateurs ont signalé des cas où des demandes de prêt étaient systématiquement refusées pour des personnes résidant dans certains quartiers, sans justification liée à leur solvabilité.
+
+Les régulateurs européens travaillent actuellement à l'élaboration d'un cadre de supervision des algorithmes financiers pour encadrer ces pratiques.
+
+>>> Quelle est la capitale de la France ?
+
+Recherche en cours...
+
+Je n'ai pas trouvé d'information pertinente dans mon corpus pour répondre à cette question.
+
+Mon domaine de compétence se limite aux articles de veille technologique indexés (IA bancaire, cybersécurité, villes intelligentes).
+
+>>> Combien de postes sont vacants en cybersécurité en France ?
+
+Recherche en cours...
+
+Selon l'[Article 2], **15 000 postes** restent vacants dans le secteur de la cybersécurité en France.
+
+À l'échelle mondiale, le rapport (ISC)2 de 2024 estime la pénurie à **3,5 millions de professionnels qualifiés**.
+
+Les profils les plus recherchés sont :
+- Les analystes SOC
+- Les spécialistes en réponse aux incidents
+- Les architectes sécurité cloud
+
+>>> quitter
+Au revoir !
+
+=== FIN DE LA SESSION ===
