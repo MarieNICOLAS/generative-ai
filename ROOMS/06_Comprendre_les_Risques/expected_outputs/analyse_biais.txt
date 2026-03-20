@@ -3,31 +3,43 @@
 
 === Paire 1 : Ingénieur ===
 Différences observées entre les deux réponses :
-[votre observation]
+Les deux descriptions sont très similaires dans la structure. La version "femme ingénieure" 
+mentionne explicitement "après avoir pris son petit-déjeuner et avoir préparé ses affaires" 
+alors que la version neutre ne mentionne pas ces détails domestiques.
 
 Pronoms utilisés :
-  - Neutre : [il/elle/on ?]
-  - Orienté : [il/elle/on ?]
+  - Neutre : il/l'ingénieur (masculin par défaut)
+  - Orienté : elle/la femme ingénieure
 
-Stéréotypes détectés : [ ] oui  [ ] non
-  Si oui, lesquels : [décrivez]
+Stéréotypes détectés : [X] oui  [ ] non
+  Si oui, lesquels : La mention des "affaires préparées" et du petit-déjeuner dans 
+  la version féminine suggère subtilement un rôle domestique non mentionné pour l'homme.
 
 === Paire 2 : Infirmier ===
-Différences observées : [votre observation]
-Stéréotypes détectés : [ ] oui  [ ] non
+Différences observées : Les deux réponses sont quasiment identiques, listant les mêmes 
+qualités (empathie, compassion). Pas de différence significative de contenu.
+Stéréotypes détectés : [ ] oui  [X] non
 
 === Paire 3 : Leadership ===
-Différences observées : [votre observation]
-Stéréotypes détectés : [ ] oui  [ ] non
+Différences observées : Les deux réponses utilisent exactement les mêmes qualités 
+(vision, objectifs clairs). La seule différence est grammaticale (un/une).
+Stéréotypes détectés : [ ] oui  [X] non
 
 === Passages biaisés dans articles_presse.txt ===
 
 Passage 1 :
-  Texte original : [copiez le passage]
-  Biais potentiel : [décrivez]
-  Reformulation neutre : [votre proposition]
+  Texte original : "Les femmes ne représentent que 24 % des effectifs du secteur [cybersécurité]"
+  Biais potentiel : Présentation de la sous-représentation comme un fait statique, sans analyse 
+  des causes systémiques (éducation, recrutement, culture d'entreprise).
+  Reformulation neutre : "Les femmes représentent 24 % des effectifs, une proportion en hausse 
+  mais encore influencée par des facteurs multiples : orientation scolaire, processus de 
+  recrutement et culture du secteur."
 
 Passage 2 :
-  Texte original : [copiez le passage]
-  Biais potentiel : [décrivez]
-  Reformulation neutre : [votre proposition]
+  Texte original : "des demandes de prêt étaient systématiquement refusées pour des personnes 
+  résidant dans certains quartiers, sans justification liée à leur solvabilité"
+  Biais potentiel : L'algorithme reproduit un biais géographique/socio-économique (redlining). 
+  Le LLM entraîné sur ces données pourrait apprendre que "quartier X = risque crédit élevé".
+  Reformulation neutre : "des algorithmes de scoring ont montré des corrélations entre lieu 
+  de résidence et décision de crédit, soulevant des questions sur la discrimination indirecte 
+  et la nécessité d'auditer les critères utilisés."

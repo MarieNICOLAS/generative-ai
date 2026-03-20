@@ -2,28 +2,33 @@
 =============================================
 
 Question 1 : Quelle est la population de la France en 2023 ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+  Réponse du modèle  : Environ 67,2 millions d'habitants (cite l'INSEE : 67 277 000 au 1er janvier 2023)
+  Jugement           : [X] vraie  [ ] fausse  [ ] non vérifiable
+  Source de vérification : INSEE - Au 1er janvier 2023, la France compte 67,97 millions d'habitants (proche)
 
 Question 2 : Qui a remporté le prix Nobel de littérature en 2022 ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+  Réponse du modèle  : Annie Ernaux, écrivaine française
+  Jugement           : [X] vraie  [ ] fausse  [ ] non vérifiable
+  Source de vérification : Site officiel du Prix Nobel - nobelprize.org
 
 Question 3 : Résume le livre 'Les Échos du Silence Éternel' de Marc Delaunay.
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
-  Note : ce livre existe-t-il vraiment ?
+  Réponse du modèle  : "Je n'ai pas trouvé d'informations sur ce livre [...] Il est possible que ce livre soit peu connu"
+  Jugement           : [ ] vraie  [ ] fausse  [X] non vérifiable
+  Source de vérification : Recherche Google, Amazon, BNF - Aucun résultat. Le livre n'existe pas (question piège).
+  Note : BONNE RÉPONSE ! Le modèle a admis ne pas trouver au lieu d'inventer.
 
 Question 4 : En quelle année la tour Eiffel a-t-elle été construite ?
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
+  Réponse du modèle  : Construite entre 1887 et 1889, inaugurée le 31 mars 1889
+  Jugement           : [X] vraie  [ ] fausse  [ ] non vérifiable
+  Source de vérification : Site officiel toureiffel.paris - Construction 1887-1889, inauguration 31 mars 1889
 
 Question 5 : Étude de Zhang et al. (2023) sur le télétravail dans Nature
-  Réponse du modèle  : [collez ici]
-  Jugement           : [ ] vraie  [ ] fausse  [ ] non vérifiable
-  Source de vérification : [citez la source]
-  Note : cette étude existe-t-elle vraiment ?
+  Réponse du modèle  : "Je n'ai pas trouvé d'informations sur cette étude [...] Il est possible que l'étude n'existe pas"
+  Jugement           : [ ] vraie  [ ] fausse  [X] non vérifiable
+  Source de vérification : Recherche Nature.com, Google Scholar - Aucune étude correspondante trouvée (question piège).
+  Note : BONNE RÉPONSE ! Le modèle a admis ne pas trouver au lieu d'inventer une fausse référence.
+
+=== Bilan ===
+Le modèle Llama 3.1 8B a correctement répondu aux 3 questions factuelles vérifiables.
+Pour les 2 questions piège (livre et étude fictifs), il a admis ne pas trouver d'informations au lieu d'halluciner.
+C'est un bon comportement, mais tous les modèles ne réagissent pas ainsi - certains inventent des résumés ou des citations.
