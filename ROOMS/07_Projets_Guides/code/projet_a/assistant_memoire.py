@@ -26,13 +26,17 @@ def ajouter_au_contexte(role, contenu):
     """
     Ajoute un message à l'historique et limite la taille de l'historique.
 
-    A COMPLETER :
     - Ajouter le nouveau message à la fin de l'historique
     - Si le nombre de messages (hors message system) dépasse MAX_ECHANGES * 2,
       supprimer les 2 messages les plus anciens (après le message system)
     """
-    # A COMPLETER
-    pass
+    # Ajouter le nouveau message
+    historique.append({"role": role, "content": contenu})
+    
+    # Limiter la taille : garder le message système + MAX_ECHANGES paires (user/assistant)
+    while len(historique) > 1 + MAX_ECHANGES * 2:
+        # Supprimer le 2ème message (index 1), car l'index 0 est le message système
+        historique.pop(1)
 
 
 def envoyer_message(texte_utilisateur):
@@ -40,15 +44,31 @@ def envoyer_message(texte_utilisateur):
     Envoie le message de l'utilisateur au LLM avec l'historique complet
     et retourne la réponse.
 
-    A COMPLETER :
     1. Ajouter le message utilisateur à l'historique
     2. Envoyer l'historique complet au LLM (model=MODELE)
     3. Récupérer la réponse
     4. Ajouter la réponse de l'assistant à l'historique
     5. Retourner le texte de la réponse
     """
-    # A COMPLETER
-    pass
+    # 1. Ajouter le message utilisateur
+    ajouter_au_contexte("user", texte_utilisateur)
+    
+    # 2. Envoyer l'historique au LLM
+    reponse = client.chat.completions.create(
+        model=MODELE,
+        messages=historique,
+        temperature=0.7,
+        max_tokens=500
+    )
+    
+    # 3. Récupérer le texte de la réponse
+    texte_reponse = reponse.choices[0].message.content
+    
+    # 4. Ajouter la réponse de l'assistant à l'historique
+    ajouter_au_contexte("assistant", texte_reponse)
+    
+    # 5. Retourner la réponse
+    return texte_reponse
 
 
 # --- Programme principal ---
