@@ -26,20 +26,59 @@ def charger_articles(chemin):
 
 def analyser_article(texte_article, numero):
     """
-    A COMPLETER :
-    - Construire un prompt qui demande au modèle d'analyser le texte
-    - Exiger une sortie JSON avec les clés : article_numero, sentiment, mots_cles, resume
-    - Tenter jusqu'à MAX_TENTATIVES fois si le JSON est invalide
-    - Utiliser client et MODELE
-    - Retourner le dictionnaire Python résultant, ou None si échec
+    Analyse un article et retourne un dictionnaire avec :
+    - article_numero, sentiment, mots_cles, resume
+    Tente jusqu'à MAX_TENTATIVES fois si le JSON est invalide.
     """
-    # A COMPLETER
-    pass
+    prompt = f"""Analyse l'article suivant et retourne UNIQUEMENT un objet JSON valide avec ces clés :
+- "article_numero": {numero}
+- "sentiment": "positif", "neutre" ou "négatif"
+- "mots_cles": liste de 3 à 5 mots-clés principaux
+- "resume": résumé en une phrase (maximum 30 mots)
+
+Article :
+{texte_article}
+
+Réponds UNIQUEMENT avec le JSON, sans texte avant ou après."""
+
+    for tentative in range(MAX_TENTATIVES):
+        try:
+            reponse = client.chat.completions.create(
+                model=MODELE,
+                messages=[
+                    {"role": "system", "content": "Tu es un analyseur de texte. Tu réponds uniquement en JSON valide."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0,
+                max_tokens=300
+            )
+            
+            texte_reponse = reponse.choices[0].message.content.strip()
+            
+            # Nettoyer la réponse (enlever les ```json si présents)
+            if texte_reponse.startswith("```"):
+                texte_reponse = texte_reponse.split("```")[1]
+                if texte_reponse.startswith("json"):
+                    texte_reponse = texte_reponse[4:]
+            texte_reponse = texte_reponse.strip()
+            
+            # Parser le JSON
+            resultat = json.loads(texte_reponse)
+            return resultat
+            
+        except json.JSONDecodeError:
+            print(f"  Tentative {tentative + 1}/{MAX_TENTATIVES} : JSON invalide, nouvelle tentative...")
+            continue
+        except Exception as e:
+            print(f"  Erreur : {e}")
+            continue
+    
+    return None
 
 
 # --- Programme principal ---
 
-chemin_articles = os.path.join(os.path.dirname(__file__), "..", "..", "..", "datasets", "articles_presse.txt")
+chemin_articles = os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "datasets", "articles_presse.txt")
 
 print("Chargement des articles...")
 articles = charger_articles(chemin_articles)
@@ -64,7 +103,7 @@ for i, article in enumerate(articles, 1):
 
     print()
 
-chemin_sortie = os.path.join(os.path.dirname(__file__), "..", "expected_outputs", "resultats_analyse.json")
+chemin_sortie = os.path.join(os.path.dirname(__file__), "..", "..", "expected_outputs", "resultats_analyse.json")
 with open(chemin_sortie, "w", encoding="utf-8") as f:
     json.dump(resultats, f, ensure_ascii=False, indent=2)
 
