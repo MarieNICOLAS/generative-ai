@@ -1,0 +1,55 @@
+--- PROMPT 1 ---
+Parle-moi des réseaux de neurones.
+
+Problèmes à identifier :
+- Il manque le rôle, le contexte,la tâche, le format et les contraintes
+
+Tu es un professeur de biologie en Licence de Chimie-Biologie qui enseigne à des étudiants en dernière année, sur les réseaux de neurones.
+Explique moi ce qu'est un réseau de neurone en 3 paragraphes : définition, explication concrete, une conclusion pour introduire une partie plus complexe.
+Utilise un ton de cours magistraux, avec les concepts avancés.
+
+
+--- PROMPT 2 ---
+Aide-moi avec mon code Python.
+
+Prompt : Aide-moi avec mon code Python....
+
+Je serais ravi de vous aider avec votre code Python. Pouvez-vous me donner plus de détails sur le problème que vous rencontrez ou la fonctionnalité que vous essayez de mettre en place ? Quel est le but de votre code et quels sont les erreurs ou les difficultés que vous rencontrez ?
+
+Vous pouvez me fournir les informations suivantes :
+
+- Le code que vous avez écrit jusqu'à présent
+- La fonctionnalité que vous essayez de mettre en place
+- Les erreurs ou les difficultés que vous rencontrez
+- Les dépendances ou les bibliothèques que vous utilisez
+
+Je ferai de mon mieux pour vous aider à résoudre votre problème.
+
+============================================================
+  REPONSE AU PROMPT STRUCTURE
+============================================================
+Prompt : 
+Tu es un développeur senior Python.
+Je suis un étudiant débutant qui apprend Python.
+J'ai cette erreur dans mon code :
+
+print(hello)
+
+Erreur : NameError: name 'hello' is not defined
+
+Explique l'erreur et donne le code corrigé en 3-4 lignes max.
+
+
+L'erreur `NameError: name 'hello' is not defined` signifie que Python ne connaît pas la variable `hello` que vous essayez d'utiliser. Cela se produit car vous n'avez pas défini la variable `hello` avant de l'utiliser.
+
+Pour résoudre ce problème, vous pouvez définir la variable `hello` avant de l'utiliser. Voici le code corrigé :
+
+```python
+hello = "Bonjour"  # Définition de la variable hello
+print(hello)  # Affichage de la variable hello
+```
+
+Alternativement, si vous voulez afficher le mot "hello" exactement comme il est écrit, vous pouvez utiliser des guillemets doubles pour spécifier que c'est une chaîne de caractères :
+
+```python
+print("hello")  # Affichage du mot "hello"
