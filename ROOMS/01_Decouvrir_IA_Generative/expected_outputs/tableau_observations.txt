@@ -1,29 +1,30 @@
-﻿Tableau d'observations - Room 01
+Tableau d'observations — Room 01
 =================================
 A compléter au fil des étapes de practice.md
 
-Etape 1 - Premier prompt
-  Prompt utilisé     : [votre prompt ici]
-  Réponse obtenue    : [résumez en 1-2 phrases]
-  Jugement           : [ ] correcte  [ ] incorrecte  [ ] impossible à vérifier
+Etape 1 — Premier prompt
+  Prompt utilisé     : [Qui a écrit le roman Les Fleurs du Mal ?]
+  Réponse obtenue    : [Le roman "Les Fleurs du Mal" a été écrit par Charles Baudelaire. Il s'agit d'un recueil de poèmes publié en 1857, qui est considéré comme l'un des plus importants]
+  Jugement           : [X] correcte  [ ] incorrecte  [ ] impossible à vérifier
 
-Etape 2 - Hallucination
-  Prompt utilisé     : [votre prompt ici]
-  Réponse obtenue    : [résumez en 1-2 phrases]
-  Jugement           : [ ] correcte  [ ] incorrecte  [ ] impossible à vérifier
-  Ce qui est faux    : [expliquez l'erreur]
+Etape 2 — Hallucination
+  Prompt utilisé     : [Qui a écrit le roman Le Seigneur des Ombres publié en 1972 ? ]
+  Réponse obtenue    : [Le roman "Le Seigneur des Ombres" a été écrit par Stephen King. Il a été publié en 1972 sous le titre original "The Eyes of the Dragon" n'est pas le roman que vous cherchez, mais plutôt "The Eyes of the Dragon" est un roman de Stephen King publié en 1987.
+  Le roman que vous cherchez est probablement "Le Seigneur des Ténèbres" (The Dark Tower I : The Gunslinger) qui est le premier tome de la série "Les Ténèbres" (The Dark Tower) de Stephen King.]
+  Jugement           : [ ] correcte  [X] incorrecte  [ ] impossible à vérifier
+  Ce qui est faux    : [Le livre n'existe pas, associé à un titre de Stephen King. Se contredot dans la même réponse (2 années différentes)]
 
-Etape 3 - Comparaison de formulations
+Etape 3 — Comparaison de formulations
   Prompt A           : Quelle est la capitale de l'Australie ?
-  Réponse A          : [votre réponse ici]
+  Réponse A          : [La capitale de l'Australie est Canberra.]
   Prompt B           : Quelle est la capitale de l'Australie ? Réponds en une seule phrase.
-  Réponse B          : [votre réponse ici]
-  Différence observée: [oui/non - expliquez si oui]
+  Réponse B          : [La capitale de l'Australie est Canberra.]
+  Différence observée: [Différence observée: Non — Les deux réponses sont identiques. L'instruction "Réponds en une seule phrase" n'a pas changé la sortie car le modèle donnait déjà une réponse courte par défaut.]
 
-Etape 4 - Effet de la température
-  Prompt utilisé     : [le prompt du script 02]
-  Réponse température 0   (exécution 1) : [résumez]
-  Réponse température 0   (exécution 2) : [résumez]
-  Réponse température 0.9 (exécution 1) : [résumez]
-  Réponse température 0.9 (exécution 2) : [résumez]
-  Variabilité observée : [ ] aucune  [ ] légère  [ ] forte
+Etape 4 — Effet de la température
+  Prompt utilisé     : Décris en quelques phrases comment fonctionne la photosynthèse.
+  Réponse température 0   (exécution 1) : Explication en 5 points numérotés : chloroplastes, absorption eau/CO2, équation chimique, stockage glucose, libération O2
+  Réponse température 0   (exécution 2) : Identique à l'exécution 1 (même structure, mêmes mots)
+  Réponse température 0.9 (exécution 1) : Parle d'ATP/NADPH, 4 étapes, style plus technique
+  Réponse température 0.9 (exécution 2) : Style différent, parle de "glandes foliaires", formulation plus narrative
+  Variabilité observée : [ ] aucune  [ ] légère  [X] forte

@@ -1,0 +1,16 @@
+Analyse réflexive — Room 01
+===========================
+
+1. Pourquoi le modèle peut-il affirmer quelque chose de faux sans le savoir ?
+
+Un LLM ne "sait" rien : il prédit le mot suivant le plus probable en fonction de ses données d'entraînement. Il n'a pas de mécanisme interne pour distinguer ce qu'il connaît de ce qu'il invente — il génère toujours une suite de texte plausible, même quand la bonne réponse serait "je ne sais pas".
+
+
+2. Dans quel contexte professionnel l'hallucination serait-elle dangereuse ?
+
+Dans le domaine médical ou juridique, une hallucination pourrait avoir des conséquences graves : un diagnostic inventé, une jurisprudence fictive citée dans un dossier, ou des posologies de médicaments incorrectes. Dans la finance, des chiffres inventés pourraient mener à de mauvaises décisions d'investissement.
+
+
+3. Quelle précaution simple pourriez-vous prendre pour réduire ce risque ?
+
+Toujours vérifier les informations factuelles générées par un LLM avec une source externe fiable (documentation officielle, base de données, expert humain). Ne jamais utiliser la sortie d'un LLM comme source de vérité sans validation.

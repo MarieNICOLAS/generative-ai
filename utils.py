@@ -13,7 +13,9 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Charger le .env depuis la racine du projet (où se trouve utils.py)
+RACINE_PROJET = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(RACINE_PROJET, ".env"))
 
 # Detection de la cle disponible
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
